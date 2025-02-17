@@ -1,0 +1,39 @@
+{
+    "entry_point": "location_routing_problem:LocationRoutingProblem",
+    "default_params": {
+      "instance_file": "instances/coordGaspelle.dat"
+    },
+    "problem_type": "Location Routing Problem",
+    "description": "In the Location Routing Problem (LRP), a fleet of vehicles with uniform capacity must service a set of customers from one of several depots. Each depot has a capacity and an opening cost, and each customer has a demand. Vehicles follow routes that start and end at their assigned depot. The objective is to decide which depots to open and to design routes (and assign depots to them) so as to minimize the total cost, which consists of a fixed route opening cost plus the travel distance for each route, in addition to depot opening costs for depots that are used. All capacity constraints for vehicles and depots must be satisfied.",
+    "keywords": [
+      "location routing",
+      "vehicle routing",
+      "depot selection",
+      "capacity",
+      "optimization"
+    ],
+    "data_format": {
+      "instance_file": {
+        "format": "A text file in the S. Barreto format. The file starts with the number of customers and the number of depots. Next, it lists the coordinates (x and y) for each depot (one per depot), then the coordinates for each customer (one per customer). This is followed by the vehicle capacity, the capacity of each depot (one per depot), the demand for each customer, the opening cost for each depot, the opening cost for a route, and finally a boolean (0 or 1) indicating if costs should be treated as doubles."
+      }
+    },
+    "decision_variables": {
+      "solution": {
+        "type": "dictionary",
+        "description": "A dictionary with two keys: 'routes' and 'depot_assignment'. 'routes' is a list (of length equal to the number of trucks) where each element is a list of customer indices (0-indexed) representing the visiting order for that truck. 'depot_assignment' is a list (of the same length) where each element is the depot index (0-indexed) assigned to that truck."
+      }
+    },
+    "objective": {
+      "type": "minimization",
+      "function": "Total Cost = Sum_{r in routes} (opening_route_cost + route_distance) + Sum_{d in depots used} opening_depot_cost",
+      "description": "Minimize the total cost, defined as the sum of routing costs (which include a fixed route opening cost plus the travel distance of each route) and depot opening costs (applied once for each depot that serves at least one route). Vehicle capacity and depot capacity constraints must be satisfied."
+    },
+    "solution_representation": "A dictionary with keys 'routes' (a list of routes, each being a list of customer indices) and 'depot_assignment' (a list of depot indices, one per route).",
+    "compatible_optimizers": [
+      "genetic_algorithm",
+      "simulated_annealing",
+      "particle_swarm",
+      "tabu_search"
+    ]
+  }
+  
