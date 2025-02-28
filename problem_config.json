@@ -3,14 +3,17 @@
     "default_params": {
       "instance_file": "instances/coordGaspelle.dat"
     },
-    "problem_type": "Location Routing Problem",
+    "creator": "Rastion",
+    "type": "problem",
+    "problem_name": "Location routing problem",
     "description": "In the Location Routing Problem (LRP), a fleet of vehicles with uniform capacity must service a set of customers from one of several depots. Each depot has a capacity and an opening cost, and each customer has a demand. Vehicles follow routes that start and end at their assigned depot. The objective is to decide which depots to open and to design routes (and assign depots to them) so as to minimize the total cost, which consists of a fixed route opening cost plus the travel distance for each route, in addition to depot opening costs for depots that are used. All capacity constraints for vehicles and depots must be satisfied.",
+    "link_to_dataset": "https://github.com/Rastion/location_routing_problem/blob/main/instances/coordGaspelle.dat",
     "keywords": [
       "location routing",
       "vehicle routing",
       "depot selection",
       "capacity",
-      "optimization"
+      "route-optimization"
     ],
     "data_format": {
       "instance_file": {
@@ -29,11 +32,8 @@
       "description": "Minimize the total cost, defined as the sum of routing costs (which include a fixed route opening cost plus the travel distance of each route) and depot opening costs (applied once for each depot that serves at least one route). Vehicle capacity and depot capacity constraints must be satisfied."
     },
     "solution_representation": "A dictionary with keys 'routes' (a list of routes, each being a list of customer indices) and 'depot_assignment' (a list of depot indices, one per route).",
-    "compatible_optimizers": [
-      "genetic_algorithm",
-      "simulated_annealing",
-      "particle_swarm",
-      "tabu_search"
+    "formulations": [
+      ""
     ]
   }
   
